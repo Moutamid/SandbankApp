@@ -23,7 +23,8 @@
         android:background="@drawable/btn_bg"
         android:fontFamily="@font/nunito_bold"
         android:text="Inicia Sesión"
-        android:onClick="create_account"
+        android:onClick="login"
+
         android:textColor="@color/app_color" />
 
     <TextView
@@ -34,9 +35,11 @@
         android:layout_marginBottom="40dp"
         android:fontFamily="@font/nunito_medium"
         android:gravity="center"
+        android:onClick="create_account"
+
         android:text="No tienes aún una cuenta? Regístrate"
         android:textColor="@color/white"
 
-        android:textSize="18dp" />
+        android:textSize="16dp" />
 
 </RelativeLayout>

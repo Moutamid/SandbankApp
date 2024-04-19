@@ -9,6 +9,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
+import com.fxn.stash.Stash;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -39,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void finish(View view) {
+        Stash.put("login", false);
+        startActivity(new Intent(this, SplashActivity.class));
+
         finishAffinity();
     }
 

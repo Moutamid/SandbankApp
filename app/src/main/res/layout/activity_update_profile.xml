@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,7 +13,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Identificate Section -->
         <TextView
+            android:id="@+id/textViewIdentificate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -22,6 +23,7 @@
             android:text="Identificate"
             android:textColor="@color/black"
             android:textSize="24dp" />
+
         <ImageView
             android:id="@+id/home_icon"
             android:layout_width="40dp"
@@ -29,13 +31,14 @@
             android:layout_alignParentEnd="true"
             android:layout_gravity="end"
             android:onClick="home"
-            android:layout_marginTop="-40dp"
+            android:layout_marginTop="-36dp"
             android:src="@drawable/home" />
-
+        <!-- Nombre y Apellidos Section -->
         <TextView
+            android:id="@+id/textViewNombreApellidos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/nunito_bold"
             android:text="Nombre y Apellidos"
             android:textColor="@color/black"
@@ -46,7 +49,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="7sp">
 
+            <!-- EditText for Name -->
             <EditText
+                android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
@@ -57,11 +62,12 @@
                 android:hint="Ej: Alejandro"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-
                 android:textColorHint="@color/app_color"
                 android:textSize="14dp" />
 
+            <!-- EditText for Last Name -->
             <EditText
+                android:id="@+id/et_last_name"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
@@ -71,19 +77,21 @@
                 android:gravity="center"
                 android:hint="Ej: Alejandro"
                 android:paddingStart="5dp"
-
                 android:paddingEnd="5dp"
                 android:textColorHint="@color/app_color"
                 android:textSize="14dp" />
 
         </LinearLayout>
 
+        <!-- DNI and Email Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7sp">
 
+            <!-- TextView for DNI -->
             <TextView
+                android:id="@+id/textViewDNI"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -92,7 +100,9 @@
                 android:textColor="@color/black"
                 android:textSize="16dp" />
 
+            <!-- TextView for Email -->
             <TextView
+                android:id="@+id/textViewEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -110,7 +120,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="7sp">
 
+            <!-- EditText for DNI -->
             <EditText
+                android:id="@+id/et_dni"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
@@ -119,24 +131,26 @@
                 android:fontFamily="@font/nunito_semibold"
                 android:gravity="center"
                 android:hint="Ej: 01234567F"
+                android:inputType="number"
                 android:paddingStart="5dp"
-
                 android:paddingEnd="5dp"
                 android:textColorHint="@color/app_color"
-
                 android:textSize="14dp" />
 
+            <!-- EditText for Email -->
             <EditText
+                android:id="@+id/et_email"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/edit_bg"
                 android:ems="1"
+                android:singleLine="true"
                 android:fontFamily="@font/nunito_semibold"
                 android:gravity="center"
-
                 android:hint="Ej ej@gmail.com"
+                android:enabled="false"
                 android:maxEms="1"
                 android:maxLines="1"
                 android:paddingStart="15dp"
@@ -146,12 +160,15 @@
 
         </LinearLayout>
 
+        <!-- Número de Teléfono and Fecha de Nacimiento Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7sp">
 
+            <!-- TextView for Phone Number -->
             <TextView
+                android:id="@+id/textViewPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -160,7 +177,9 @@
                 android:textColor="@color/black"
                 android:textSize="16dp" />
 
+            <!-- TextView for Date of Birth -->
             <TextView
+                android:id="@+id/textViewDOB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -179,14 +198,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="7sp">
 
+            <!-- EditText for Phone Number -->
             <EditText
+                android:id="@+id/et_phone_number"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:singleLine="true"
+                android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/edit_bg"
                 android:fontFamily="@font/nunito_semibold"
                 android:gravity="center"
+                android:inputType="number"
+
                 android:hint="Ej: +34657454"
                 android:maxLines="1"
                 android:paddingStart="5dp"
@@ -194,16 +218,18 @@
                 android:textColorHint="@color/app_color"
                 android:textSize="14dp" />
 
+            <!-- EditText for Date of Birth -->
             <EditText
+                android:id="@+id/et_dob"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:singleLine="true"
+                android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/edit_bg"
                 android:ems="1"
                 android:fontFamily="@font/nunito_semibold"
                 android:gravity="center"
-
                 android:hint="Día/Mes/Año"
                 android:maxEms="1"
                 android:maxLines="1"
@@ -214,12 +240,15 @@
 
         </LinearLayout>
 
+        <!-- Contraseña Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7sp">
 
+            <!-- TextView for Password -->
             <TextView
+                android:id="@+id/textViewPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -238,15 +267,21 @@
 
             android:layout_marginEnd="100dp">
 
+            <!-- EditText for Password -->
             <EditText
+                android:id="@+id/et_password"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:singleLine="true"
+                android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/edit_bg"
                 android:fontFamily="@font/nunito_semibold"
                 android:hint="Ej: contraseña123"
                 android:maxLines="1"
+                android:enabled="false"
+
+                android:inputType="textPassword"
                 android:paddingStart="15dp"
                 android:paddingEnd="5dp"
                 android:textColorHint="@color/app_color"
@@ -254,7 +289,9 @@
 
         </LinearLayout>
 
+        <!-- Dirección Section -->
         <TextView
+            android:id="@+id/textViewDireccion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -263,7 +300,9 @@
             android:textColor="@color/black"
             android:textSize="24dp" />
 
+        <!-- Nombre y Número de Calle Section -->
         <TextView
+            android:id="@+id/textViewNombreNumeroCalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -277,11 +316,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="7sp">
 
+            <!-- EditText for Street Name -->
             <EditText
+                android:id="@+id/et_street"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:singleLine="true"
+                android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
+                android:textSize="14dp"
                 android:background="@drawable/edit_bg"
                 android:fontFamily="@font/nunito_semibold"
                 android:hint="Ej: Calle Gran Vía"
@@ -289,22 +332,26 @@
                 android:paddingEnd="5dp"
                 android:textColorHint="@color/app_color" />
 
+            <!-- EditText for Street Number -->
             <EditText
+                android:id="@+id/et_street_number"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:singleLine="true"
+                android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="2"
+                android:textSize="14dp"
                 android:background="@drawable/edit_bg"
                 android:fontFamily="@font/nunito_semibold"
                 android:gravity="center"
                 android:hint="Ej:  13"
+                android:inputType="number"
 
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
                 android:textColorHint="@color/app_color" />
 
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -332,14 +379,18 @@
 
         </LinearLayout>
 
+        <!-- Piso and Código Postal Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7sp">
 
+            <!-- EditText for Floor -->
             <EditText
+                android:id="@+id/et_floor"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:singleLine="true"
+                android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="2"
                 android:background="@drawable/edit_bg"
@@ -347,28 +398,31 @@
                 android:gravity="center"
                 android:hint="Ej:  1A"
                 android:paddingStart="5dp"
+                android:textSize="14dp"
                 android:paddingEnd="5dp"
                 android:textColorHint="@color/app_color" />
 
+            <!-- EditText for Postal Code -->
             <EditText
+                android:id="@+id/et_postal_code"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="43dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/edit_bg"
                 android:ems="1"
                 android:fontFamily="@font/nunito_semibold"
-
                 android:hint="Ej: 28880"
                 android:maxEms="1"
                 android:maxLines="1"
+                android:inputType="number"
+
                 android:paddingStart="25dp"
                 android:paddingEnd="5dp"
                 android:textColorHint="@color/app_color"
                 android:textSize="14dp" />
 
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -397,14 +451,18 @@
 
         </LinearLayout>
 
+        <!-- Localidad and Región Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7sp">
 
+            <!-- EditText for City -->
             <EditText
+                android:id="@+id/et_city"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:singleLine="true"
+                android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/edit_bg"
@@ -417,9 +475,12 @@
                 android:textColorHint="@color/app_color"
                 android:textSize="14dp" />
 
+            <!-- EditText for Region -->
             <EditText
+                android:id="@+id/et_region"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:singleLine="true"
+                android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/edit_bg"
@@ -435,7 +496,6 @@
                 android:textSize="14dp" />
 
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -452,17 +512,18 @@
 
 
         </LinearLayout>
-
+        <!-- País Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7sp"
+            android:layout_marginTop="7sp">
 
-            android:layout_marginEnd="100dp">
-
+            <!-- EditText for Country -->
             <EditText
+                android:id="@+id/et_country"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:singleLine="true"
+                android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/edit_bg"
@@ -476,6 +537,7 @@
 
         </LinearLayout>
 
+        <!-- Button to Create Account -->
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -484,7 +546,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="50dp"
             android:background="@drawable/outline_btn_bg"
-            android:onClick="error"
+            android:onClick="update"
             android:text="Actualizar"
             android:textColor="#FFFFFF" />
     </LinearLayout>
