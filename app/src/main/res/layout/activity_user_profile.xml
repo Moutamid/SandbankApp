@@ -51,11 +51,14 @@
                 android:textSize="18dp" />
 
             <EditText
+                android:id="@+id/current_user_IBAN"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="15sp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
+                android:inputType="text"
+
                 android:background="@drawable/edit_bg"
                 android:fontFamily="@font/nunito_semibold"
                 android:hint="Ej: ES32 1664 6678 9101 1213 "
@@ -80,11 +83,14 @@
 
 
             <EditText
+                android:id="@+id/current_dni"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="15sp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
+                android:inputType="number"
+
 
                 android:background="@drawable/edit_bg"
                 android:fontFamily="@font/nunito_semibold"
@@ -109,10 +115,12 @@
 
 
             <EditText
+                android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="15sp"
                 android:layout_marginEnd="20dp"
+                android:inputType="textPassword"
                 android:layout_weight="1"
                 android:background="@drawable/edit_bg"
                 android:fontFamily="@font/nunito_semibold"
@@ -157,7 +165,7 @@
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_gravity="end"
-        android:onClick="home"
+        android:onClick="home_"
         android:layout_marginTop="46dp"
         android:src="@drawable/home" />
 

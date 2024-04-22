@@ -81,7 +81,7 @@ android:layout_marginTop="16dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/nova_mono"
 
-                android:text="IBAN: ES21 1234 5678 9101 1213 1415 "
+                android:text="IBAN: 0000 0000 0000 0000 0000 0000"
                 android:textColor="@color/black"
                 android:textSize="14dp" />
 
@@ -100,133 +100,25 @@ android:layout_marginTop="16dp"
                 android:textSize="14dp" />
 
             <TextView
+                android:id="@+id/amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_toRightOf="@+id/icon"
                 android:fontFamily="@font/nunito_bold"
-
-                android:text="200000 \u20AC"
+                android:text="0 \u20AC"
                 android:textColor="@color/black"
                 android:textSize="36dp" />
 
-            <LinearLayout
-                android:id="@+id/lay1"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:layout_below="@+id/textView2"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/back_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/card_number"
-
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/nunito_medium"
-                    android:text="20,000 \u20AC"
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/card_number"
-                    android:layout_marginStart="40dp"
-
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/nunito_medium"
-                    android:text="16/03/2024"
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
-
-            </LinearLayout>
-       <LinearLayout
-           android:id="@+id/lay2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/lay1"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/back_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/card_number"
-
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/nunito_medium"
-                    android:text="20,000 \u20AC"
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/card_number"
-                    android:layout_marginStart="40dp"
-
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/nunito_medium"
-                    android:text="16/03/2024"
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
-
-            </LinearLayout>
-     <LinearLayout
-           android:id="@+id/lay3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/lay2"
-                android:layout_marginStart="20dp"
-         android:layout_marginBottom="30dp"
-                android:layout_marginTop="5dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/back_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/card_number"
-
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/nunito_medium"
-                    android:text="20,000 \u20AC"
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/card_number"
-                    android:layout_marginStart="40dp"
-
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/nunito_medium"
-                    android:text="16/03/2024"
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
-
-            </LinearLayout>
-
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp" />
         </RelativeLayout>
     </LinearLayout>
 

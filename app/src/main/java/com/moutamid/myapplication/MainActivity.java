@@ -1,13 +1,17 @@
 package com.moutamid.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.fxn.stash.Stash;
 
@@ -19,20 +23,41 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    TextView amount, card_number;
+    RecyclerView recyclerView;
+    TransferDataAdapter adapter;
+    DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         checkApp(MainActivity.this);
+        amount = findViewById(R.id.amount);
+        card_number = findViewById(R.id.card_number);
+        int total_amount = Stash.getInt("amount");
+        amount.setText(total_amount + " \u20AC");
+        card_number.setText(Stash.getString("IBAN"));
+        databaseHelper = new DatabaseHelper(this);
+        if (databaseHelper.getAllUserTransferData() != null) {
+            recyclerView = findViewById(R.id.recycler_view);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            List<UserTransferData> transferDataList = databaseHelper.getAllUserTransferData();
+            if (transferDataList != null) {
+                adapter = new TransferDataAdapter(transferDataList);
+                recyclerView.setAdapter(adapter);
+            } else {
+                Log.e("MainActivity", "Transfer data list is null");
+            }
+        }
     }
 
 
     public void profile(View view) {
             startActivity(new Intent(this, UpdateProfileActivity.class));
-
     }
 
     public void transfer(View view) {
@@ -43,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
     public void finish(View view) {
         Stash.put("login", false);
         startActivity(new Intent(this, SplashActivity.class));
-
         finishAffinity();
     }
 

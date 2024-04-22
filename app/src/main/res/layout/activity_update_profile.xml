@@ -132,6 +132,8 @@
                 android:gravity="center"
                 android:hint="Ej: 01234567F"
                 android:inputType="number"
+                android:enabled="false"
+
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
                 android:textColorHint="@color/app_color"

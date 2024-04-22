@@ -109,6 +109,10 @@ public class CreateAccountActivity extends AppCompatActivity {
             Toast.makeText(this, "Por favor ingrese su Fecha de Nacimiento", Toast.LENGTH_SHORT).show();
             return;
         }
+        if (!dbHelper.checkEmail(dni)) {
+            Toast.makeText(this, "Este DNI ya está en uso.", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
             return;
@@ -126,7 +130,8 @@ public class CreateAccountActivity extends AppCompatActivity {
         boolean isInserted = dbHelper.addUser(name, lastName, dni, email, phoneNumber, dob, password, street, streetNumber, floor, postalCode, city, region, country);
         if (isInserted) {
             Stash.put("login", true);
-
+            Stash.put("amount",0 );
+            Stash.put("IBAN", "IBAN: 0000 0000 0000 0000 0000 0000");
             Toast.makeText(this, "User registered successfully", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, MainActivity.class));
             finishAffinity();
@@ -134,6 +139,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             Toast.makeText(this, "Failed to register user", Toast.LENGTH_SHORT).show();
         }
     }
+
 
 
 }
