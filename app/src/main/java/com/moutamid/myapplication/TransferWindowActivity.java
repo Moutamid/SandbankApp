@@ -102,18 +102,14 @@ public class TransferWindowActivity extends AppCompatActivity {
             if (Double.parseDouble(String.valueOf(amountToTransfer)) > currentBalance) {
                 startActivity(new Intent(this, TransferErrorActivity.class));
             } else {
-                Random random = new Random();
-                int randomNumber = random.nextInt(2);
-                if (randomNumber == 0) {
+
                     boolean isInserted = databaseHelper.addUserTransferData(destinationIBAN, recipientPhoneNumber, purposeOfTransfer, amountToTransfer);
                     if (isInserted) {
                         currentBalance -= Double.parseDouble(amountToTransfer);
                         Stash.put("amount", currentBalance);
                         startActivity(new Intent(this, MainActivity.class));
                         finish();
-                    } else {
-                        startActivity(new Intent(this, TransferErrorActivity.class));
-                    }
+
                 } else {
                     startActivity(new Intent(this, TransferErrorActivity.class));
                 }
