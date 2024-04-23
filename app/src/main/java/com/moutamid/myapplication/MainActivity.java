@@ -38,10 +38,11 @@ public class MainActivity extends AppCompatActivity {
         checkApp(MainActivity.this);
         amount = findViewById(R.id.amount);
         card_number = findViewById(R.id.card_number);
-        int total_amount = Stash.getInt("amount");
+        databaseHelper = new DatabaseHelper(this);
+
+        double total_amount = (double) Stash.getObject("amount", Double.class);
         amount.setText(total_amount + " \u20AC");
         card_number.setText(Stash.getString("IBAN"));
-        databaseHelper = new DatabaseHelper(this);
         if (databaseHelper.getAllUserTransferData() != null) {
             recyclerView = findViewById(R.id.recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -53,11 +54,12 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("MainActivity", "Transfer data list is null");
             }
         }
+
     }
 
 
     public void profile(View view) {
-            startActivity(new Intent(this, UpdateProfileActivity.class));
+            startActivity(new Intent(this, UserProfileActivity.class));
     }
 
     public void transfer(View view) {

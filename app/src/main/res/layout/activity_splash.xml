@@ -24,7 +24,6 @@
         android:fontFamily="@font/nunito_bold"
         android:text="Inicia Sesión"
         android:onClick="login"
-
         android:textColor="@color/app_color" />
 
     <TextView

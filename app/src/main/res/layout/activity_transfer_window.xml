@@ -39,13 +39,13 @@
             android:layout_marginTop="15sp"
             android:layout_marginEnd="20dp"
             android:layout_weight="1"
-            android:inputType="number"
             android:background="@drawable/edit_bg"
             android:fontFamily="@font/nunito_semibold"
             android:hint="Ej: ES32 1664 6678 9101 1213 "
             android:paddingStart="25dp"
             android:paddingTop="8dp"
             android:maxLines="1"
+            android:textSize="15dp"
             android:paddingEnd="25dp"
             android:paddingBottom="8dp"
             android:textColorHint="@color/app_color" />
@@ -71,7 +71,7 @@
             android:layout_marginTop="15sp"
             android:layout_marginEnd="20dp"
             android:layout_weight="1"
-            android:inputType="phone"
+            android:textSize="15dp"
 
             android:background="@drawable/edit_bg"
             android:fontFamily="@font/nunito_semibold"
@@ -102,6 +102,8 @@
             android:layout_height="50dp"
             android:layout_marginTop="15sp"
             android:layout_marginEnd="20dp"
+            android:textSize="15dp"
+
             android:layout_weight="1"
             android:background="@drawable/edit_bg"
             android:fontFamily="@font/nunito_semibold"
@@ -138,6 +140,7 @@
             android:fontFamily="@font/nunito_semibold"
             android:hint="Ej: 200.00"
             android:inputType="number"
+            android:textSize="15dp"
 
             android:maxLines="1"
             android:paddingStart="25dp"

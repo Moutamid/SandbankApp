@@ -131,7 +131,6 @@
                 android:fontFamily="@font/nunito_semibold"
                 android:gravity="center"
                 android:hint="Ej: 01234567F"
-                android:inputType="number"
                 android:enabled="false"
 
                 android:paddingStart="5dp"
@@ -152,7 +151,6 @@
                 android:fontFamily="@font/nunito_semibold"
                 android:gravity="center"
                 android:hint="Ej ej@gmail.com"
-                android:enabled="false"
                 android:maxEms="1"
                 android:maxLines="1"
                 android:paddingStart="15dp"
@@ -211,7 +209,6 @@
                 android:background="@drawable/edit_bg"
                 android:fontFamily="@font/nunito_semibold"
                 android:gravity="center"
-                android:inputType="number"
 
                 android:hint="Ej: +34657454"
                 android:maxLines="1"
@@ -283,7 +280,6 @@
                 android:maxLines="1"
                 android:enabled="false"
 
-                android:inputType="textPassword"
                 android:paddingStart="15dp"
                 android:paddingEnd="5dp"
                 android:textColorHint="@color/app_color"
@@ -347,7 +343,6 @@
                 android:fontFamily="@font/nunito_semibold"
                 android:gravity="center"
                 android:hint="Ej:  13"
-                android:inputType="number"
 
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
@@ -417,7 +412,6 @@
                 android:hint="Ej: 28880"
                 android:maxEms="1"
                 android:maxLines="1"
-                android:inputType="number"
 
                 android:paddingStart="25dp"
                 android:paddingEnd="5dp"

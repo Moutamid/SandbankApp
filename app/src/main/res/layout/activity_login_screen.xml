@@ -100,7 +100,7 @@ android:inputType="textPassword"
         android:layout_marginBottom="30dp"
         android:onClick="main_page"
         android:background="@drawable/outline_btn_bg"
-        android:text="CREA TU CUENTA" />
+        android:text="Listo" />
 
     <TextView
         android:id="@+id/textView1"

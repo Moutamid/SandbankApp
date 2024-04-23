@@ -130,8 +130,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         boolean isInserted = dbHelper.addUser(name, lastName, dni, email, phoneNumber, dob, password, street, streetNumber, floor, postalCode, city, region, country);
         if (isInserted) {
             Stash.put("login", true);
-            Stash.put("amount",0 );
-            Stash.put("IBAN", "IBAN: 0000 0000 0000 0000 0000 0000");
+            Stash.put("amount",20.000);
             Toast.makeText(this, "User registered successfully", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, MainActivity.class));
             finishAffinity();

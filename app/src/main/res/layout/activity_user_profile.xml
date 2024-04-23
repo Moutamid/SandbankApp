@@ -50,7 +50,7 @@
                 android:textColor="@color/black"
                 android:textSize="18dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/current_user_IBAN"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -58,12 +58,14 @@
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:inputType="text"
-
+                android:gravity="center_vertical"
                 android:background="@drawable/edit_bg"
                 android:fontFamily="@font/nunito_semibold"
-                android:hint="Ej: ES32 1664 6678 9101 1213 "
+                android:text="Ej: ES32 1664 6678 9101 1213 "
                 android:maxLines="1"
+                android:textColor="@color/app_color"
                 android:paddingStart="25dp"
+                android:textSize="16dp"
                 android:paddingTop="8dp"
                 android:paddingEnd="25dp"
                 android:paddingBottom="8dp"
@@ -71,7 +73,7 @@
 
 
             <TextView
-                android:layout_width="match_parent"
+                  android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15sp"
                 android:layout_weight="1"
@@ -82,7 +84,7 @@
                 android:textSize="18dp" />
 
 
-            <EditText
+            <TextView
                 android:id="@+id/current_dni"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -90,7 +92,9 @@
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:inputType="number"
-
+                android:gravity="center_vertical"
+                android:textColor="@color/app_color"
+                android:textSize="16dp"
 
                 android:background="@drawable/edit_bg"
                 android:fontFamily="@font/nunito_semibold"
@@ -114,7 +118,7 @@
                 android:textSize="18dp" />
 
 
-            <EditText
+            <TextView
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -127,6 +131,9 @@
                 android:hint="Ej: contraseña123"
                 android:maxLines="1"
                 android:paddingStart="25dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/app_color"
+                android:textSize="16dp"
 
                 android:paddingTop="8dp"
                 android:paddingEnd="25dp"

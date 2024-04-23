@@ -1,12 +1,16 @@
 package com.moutamid.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.fxn.stash.Stash;
 
@@ -20,6 +24,12 @@ public class LoginScreenActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
         etIdentifier = findViewById(R.id.et_identifier);
         etPassword = findViewById(R.id.et_password);
+        TextView textView = findViewById(R.id.textView1);
+        SpannableString spannableString = new SpannableString(textView.getText());
+        int startIndex = textView.getText().toString().indexOf("Ha olvidado la contraseña?");
+        int endIndex = startIndex + "Ha olvidado la contraseña?".length();
+        spannableString.setSpan(new UnderlineSpan(), startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textView.setText(spannableString);
     }
     public void main_page(View view) {
         String identifier = etIdentifier.getText().toString().trim();
