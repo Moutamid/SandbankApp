@@ -26,8 +26,8 @@ public class UserProfileActivity extends AppCompatActivity {
         current_dni = findViewById(R.id.current_dni);
         password = findViewById(R.id.password);
         databaseHelper = new DatabaseHelper(this);
-        UserData userData = databaseHelper.getUserData();
-        current_user_IBAN.setText(Stash.getString("IBAN"));
+        UserData userData = databaseHelper.getUserData(Stash.getString(Config.DNI));
+        current_user_IBAN.setText(userData.getIban());
         current_dni.setText(userData.getDni());
         password.setText(userData.getPassword());
 

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fxn.stash.Stash;
+import com.moutamid.myapplication.Model.UserData;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,14 +40,13 @@ public class MainActivity extends AppCompatActivity {
         amount = findViewById(R.id.amount);
         card_number = findViewById(R.id.card_number);
         databaseHelper = new DatabaseHelper(this);
-
-        double total_amount = (double) Stash.getObject("amount", Double.class);
-        amount.setText(total_amount + " \u20AC");
-        card_number.setText(Stash.getString("IBAN"));
-        if (databaseHelper.getAllUserTransferData() != null) {
+        UserData userData = databaseHelper.getUserData(Stash.getString(Config.DNI));
+        amount.setText(userData.getAmount() + " \u20AC");
+        card_number.setText(userData.getIban());
+        if (databaseHelper.getAllUserTransferData(Stash.getString(Config.DNI)) != null) {
             recyclerView = findViewById(R.id.recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            List<UserTransferData> transferDataList = databaseHelper.getAllUserTransferData();
+            List<UserTransferData> transferDataList = databaseHelper.getAllUserTransferData(Stash.getString(Config.DNI));
             if (transferDataList != null) {
                 adapter = new TransferDataAdapter(transferDataList);
                 recyclerView.setAdapter(adapter);
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void finish(View view) {
-        Stash.put("login", false);
+        Stash.put(Config.LOGIN, false);
         startActivity(new Intent(this, SplashActivity.class));
         finishAffinity();
     }

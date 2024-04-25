@@ -44,7 +44,8 @@ public class LoginScreenActivity extends AppCompatActivity {
             return;
         }
         if (dbHelper.checkLogin(identifier, password)) {
-            Stash.put("login", true);
+            Stash.put(Config.LOGIN, true);
+            Stash.put(Config.DNI,identifier);
             Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, MainActivity.class));
             finish(); // Finish the current activity

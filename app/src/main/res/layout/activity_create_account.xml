@@ -45,6 +45,8 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
+                android:singleLine="true"
+
                 android:background="@drawable/edit_bg"
                 android:fontFamily="@font/nunito_semibold"
                 android:gravity="center"
@@ -61,6 +63,8 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
+                android:singleLine="true"
+
                 android:background="@drawable/edit_bg"
                 android:fontFamily="@font/nunito_semibold"
                 android:gravity="center"
@@ -116,6 +120,8 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
+                android:singleLine="true"
+
                 android:background="@drawable/edit_bg"
                 android:fontFamily="@font/nunito_semibold"
                 android:gravity="center"
@@ -134,6 +140,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/edit_bg"
                 android:ems="1"
+
                 android:singleLine="true"
                 android:fontFamily="@font/nunito_semibold"
                 android:gravity="center"
@@ -196,7 +203,7 @@
                 android:background="@drawable/edit_bg"
                 android:fontFamily="@font/nunito_semibold"
                 android:gravity="center"
-
+android:inputType="phone"
                 android:hint="Ej: +34657454"
                 android:maxLines="1"
                 android:paddingStart="5dp"
@@ -216,7 +223,7 @@
                 android:ems="1"
                 android:fontFamily="@font/nunito_semibold"
                 android:gravity="center"
-                android:hint="Día/Mes/Año"
+                android:hint="Año-Mes-Día"
                 android:maxEms="1"
                 android:inputType="date"
                 android:maxLines="1"
@@ -331,7 +338,7 @@
                 android:fontFamily="@font/nunito_semibold"
                 android:gravity="center"
                 android:hint="Ej:  13"
-
+android:inputType="number"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
                 android:textColorHint="@color/app_color" />
@@ -387,7 +394,6 @@
                 android:paddingEnd="5dp"
                 android:textColorHint="@color/app_color" />
 
-            <!-- EditText for Postal Code -->
             <EditText
                 android:id="@+id/et_postal_code"
                 android:layout_width="match_parent"
@@ -396,6 +402,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/edit_bg"
                 android:ems="1"
+
                 android:fontFamily="@font/nunito_semibold"
                 android:hint="Ej: 28880"
                 android:maxEms="1"

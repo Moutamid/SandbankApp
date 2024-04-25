@@ -1,19 +1,21 @@
 package com.moutamid.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.fxn.stash.Stash;
 import com.moutamid.myapplication.Model.UserData;
 
 public class UpdateProfileActivity extends AppCompatActivity {
     private EditText etName, etLastName, etDNI, etEmail, etPhoneNumber, etDOB, etPassword,
             etStreet, etStreetNumber, etFloor, etPostalCode, etCity, etRegion, etCountry;
     private DatabaseHelper dbHelper;
+    UserData userData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +38,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         etRegion = findViewById(R.id.et_region);
         etCountry = findViewById(R.id.et_country);
 
-        // Retrieve data from SQLite database and set it to EditText fields
-        UserData userData = dbHelper.getUserData();
+        userData = dbHelper.getUserData(Stash.getString(Config.DNI));
 
         if (userData != null) {
             etName.setText(userData.getName());
@@ -82,66 +83,98 @@ public class UpdateProfileActivity extends AppCompatActivity {
         String city = etCity.getText().toString().trim();
         String region = etRegion.getText().toString().trim();
         String country = etCountry.getText().toString().trim();
-
-        if (region.isEmpty()) {
-            Toast.makeText(this, "Por favor ingrese su Región", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (country.isEmpty()) {
-            Toast.makeText(this, "Por favor ingrese su País", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (password.isEmpty()) {
-            Toast.makeText(this, "Por favor ingrese su Contraseña", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (street.isEmpty()) {
-            Toast.makeText(this, "Por favor ingrese su Dirección", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (streetNumber.isEmpty()) {
-            Toast.makeText(this, "Por favor ingrese el Número de su Calle", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (floor.isEmpty()) {
-            Toast.makeText(this, "Por favor ingrese el Piso", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (postalCode.isEmpty()) {
-            Toast.makeText(this, "Por favor ingrese su Código Postal", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (city.isEmpty()) {
-            Toast.makeText(this, "Por favor ingrese su Ciudad", Toast.LENGTH_SHORT).show();
+        if (name.isEmpty() || name.length() > 30) {
+            etName.setError("Please enter a valid name (max 30 characters)");
+            etName.requestFocus();
             return;
         }
 
-        if (name.isEmpty()) {
-            Toast.makeText(this, "Por favor ingrese su Nombre", Toast.LENGTH_SHORT).show();
+        if (lastName.isEmpty() || lastName.length() > 30) {
+            etLastName.setError("Please enter a valid last name (max 30 characters)");
+            etLastName.requestFocus();
             return;
         }
-        if (lastName.isEmpty()) {
-            Toast.makeText(this, "Por favor ingrese su Apellido", Toast.LENGTH_SHORT).show();
+
+
+        if (email.isEmpty() || !email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+            etEmail.setError("Please enter a valid email");
+            etEmail.requestFocus();
             return;
         }
-        if (dni.isEmpty()) {
-            Toast.makeText(this, "Por favor ingrese su DNI", Toast.LENGTH_SHORT).show();
+
+
+        if (!phoneNumber.matches("^\\+[0-9]{5,15}$")) {
+            etPhoneNumber.setError("Please enter a valid phone number starting with '+'");
+            etPhoneNumber.requestFocus();
             return;
         }
-        if (email.isEmpty()) {
-            Toast.makeText(this, "Por favor ingrese su Correo Electrónico", Toast.LENGTH_SHORT).show();
+
+        if (dob.isEmpty() || !dob.matches("^\\d{4}-\\d{2}-\\d{2}$")) {
+            etDOB.setError("Please enter a valid date of birth (YYYY-MM-DD)");
+            etDOB.requestFocus();
             return;
         }
-        if (phoneNumber.isEmpty()) {
-            Toast.makeText(this, "Por favor ingrese su Número de Teléfono", Toast.LENGTH_SHORT).show();
+
+        if (street.isEmpty() || !street.matches("^(?:[a-zA-ZáéíóúÁÉÍÓÚüÜñ]+\\s?){1,5}$")) {
+            etStreet.setError("Please enter a valid street name");
+            etStreet.requestFocus();
             return;
         }
-        if (dob.isEmpty()) {
-            Toast.makeText(this, "Por favor ingrese su Fecha de Nacimiento", Toast.LENGTH_SHORT).show();
+
+        if (streetNumber.isEmpty() || !streetNumber.matches("^[0-9]{1,7}$")) {
+            etStreetNumber.setError("Please enter a valid street number");
+            etStreetNumber.requestFocus();
             return;
+        }
+
+        if (floor.isEmpty() || floor.length() > 10) {
+            etFloor.setError("Max length for floor is 10 characters");
+            etFloor.requestFocus();
+            return;
+        }
+
+        if (postalCode.isEmpty() || !postalCode.matches("^[0-9]{1,7}$")) {
+            etPostalCode.setError("Please enter a valid postal code");
+            etPostalCode.requestFocus();
+            return;
+        }
+
+        if (city.isEmpty() || !city.matches("^(?:[a-zA-ZáéíóúÁÉÍÓÚüÜñ]+\\s?){1,4}$")) {
+            etCity.setError("Please enter a valid city name");
+            etCity.requestFocus();
+            return;
+        }
+
+        if (region.isEmpty() || !region.matches("^(?:[a-zA-ZáéíóúÁÉÍÓÚüÜñ]+\\s?){1,4}$")) {
+            etRegion.setError("Please enter a valid region name");
+            etRegion.requestFocus();
+            return;
+        }
+
+        if (country.isEmpty() || !country.matches("^(?:[a-zA-ZáéíóúÁÉÍÓÚüÜñ]+\\s?){1,4}$")) {
+            etCountry.setError("Please enter a valid country name");
+            etCountry.requestFocus();
+            return;
+        }
+
+
+        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (password.isEmpty() || password.length() < 8) {
+            Toast.makeText(this, "Password must be at least 8 characters long", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!password.matches(".*[A-Z].*") || !password.matches(".*\\d.*")) {
+            Toast.makeText(this, "Password must contain at least one uppercase letter and one digit", Toast.LENGTH_SHORT).show();
+            return;
+
         }
 
         dbHelper.updateUserData(
+                etDNI.getText().toString(),
                 etName.getText().toString(),
                 etLastName.getText().toString(),
                 etDNI.getText().toString(),
@@ -155,7 +188,9 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 etPostalCode.getText().toString(),
                 etCity.getText().toString(),
                 etRegion.getText().toString(),
-                etCountry.getText().toString()
+                etCountry.getText().toString(),
+                userData.getAmount(),
+                userData.getIban()
         );
         finish();
     }

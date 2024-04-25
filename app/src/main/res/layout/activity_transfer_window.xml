@@ -39,6 +39,7 @@
             android:layout_marginTop="15sp"
             android:layout_marginEnd="20dp"
             android:layout_weight="1"
+            android:inputType="textPhonetic"
             android:background="@drawable/edit_bg"
             android:fontFamily="@font/nunito_semibold"
             android:hint="Ej: ES32 1664 6678 9101 1213 "
@@ -72,6 +73,7 @@
             android:layout_marginEnd="20dp"
             android:layout_weight="1"
             android:textSize="15dp"
+            android:inputType="phone"
 
             android:background="@drawable/edit_bg"
             android:fontFamily="@font/nunito_semibold"

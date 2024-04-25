@@ -12,8 +12,11 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.fxn.stash.Stash;
+import com.moutamid.myapplication.Model.UserData;
 
-import java.util.Random;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class TransferWindowActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
@@ -22,7 +25,7 @@ public class TransferWindowActivity extends AppCompatActivity {
     private static final int IBAN_LENGTH = 29;
 
     private double currentBalance;
-
+    UserData userData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,9 +70,9 @@ public class TransferWindowActivity extends AppCompatActivity {
                 editTextIbanDestino.addTextChangedListener(this);
             }
         });
-        double total_amount = (double) Stash.getObject("amount", Double.class);
+        userData = databaseHelper.getUserData(Stash.getString(Config.DNI));
 
-        currentBalance = total_amount;
+        currentBalance = Double.parseDouble(userData.getAmount());
 
     }
 
@@ -81,10 +84,19 @@ public class TransferWindowActivity extends AppCompatActivity {
             String amountToTransfer = edittext_amount_transferir.getText().toString().trim();
             if (destinationIBAN.isEmpty()) {
                 editTextIbanDestino.setError("Required");
+                editTextIbanDestino.requestFocus();
+
                 return;
             }
             if (recipientPhoneNumber.isEmpty()) {
                 edittext_telephone.setError("Required");
+                edittext_telephone.requestFocus();
+
+                return;
+            }
+            if (!recipientPhoneNumber.matches("^\\+[0-9]{5,15}$")) {
+                edittext_telephone.setError("Please enter a valid phone number starting with '+'");
+                edittext_telephone.requestFocus();
                 return;
             }
             if (purposeOfTransfer.isEmpty()) {
@@ -93,20 +105,18 @@ public class TransferWindowActivity extends AppCompatActivity {
             }
             if (amountToTransfer.isEmpty()) {
                 edittext_amount_transferir.setError("Required");
+                edittext_amount_transferir.requestFocus();
                 return;
             }
-            Stash.put("destinationIBAN", destinationIBAN);
-            Stash.put("recipientPhoneNumber", recipientPhoneNumber);
-            Stash.put("purposeOfTransfer", purposeOfTransfer);
-            Stash.put("amountToTransfer", amountToTransfer);
+
             if (Double.parseDouble(String.valueOf(amountToTransfer)) > currentBalance) {
                 startActivity(new Intent(this, TransferErrorActivity.class));
             } else {
-
-                    boolean isInserted = databaseHelper.addUserTransferData(destinationIBAN, recipientPhoneNumber, purposeOfTransfer, amountToTransfer);
+                String currentDate = getCurrentDate("dd/MM/yyyy");
+                boolean isInserted = databaseHelper.addUserTransferData(Stash.getString(Config.DNI), currentDate, destinationIBAN, recipientPhoneNumber, purposeOfTransfer, amountToTransfer);
                     if (isInserted) {
                         currentBalance -= Double.parseDouble(amountToTransfer);
-                        Stash.put("amount", currentBalance);
+                        databaseHelper.updateAmountByDNI(userData.getDni(), String.valueOf(currentBalance));
                         startActivity(new Intent(this, MainActivity.class));
                         finish();
 
@@ -120,5 +130,8 @@ public class TransferWindowActivity extends AppCompatActivity {
             editTextIbanDestino.setError("Inavlid Format");
         }
     }
-
+    private String getCurrentDate(String format) {
+        SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.getDefault());
+        return sdf.format(new Date());
+    }
 }
