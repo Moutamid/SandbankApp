@@ -1,10 +1,10 @@
 package com.moutamid.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class CreatingAccountErrorActvity extends AppCompatActivity {
 
@@ -15,7 +15,7 @@ public class CreatingAccountErrorActvity extends AppCompatActivity {
     }
 
     public void next(View view) {
-        startActivity(new Intent(this, UpdateProfileActivity.class));
+        finish();
 
     }
 }

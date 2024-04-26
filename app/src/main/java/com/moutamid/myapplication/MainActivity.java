@@ -24,6 +24,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,30 +43,36 @@ public class MainActivity extends AppCompatActivity {
         card_number = findViewById(R.id.card_number);
         databaseHelper = new DatabaseHelper(this);
         UserData userData = databaseHelper.getUserData(Stash.getString(Config.DNI));
-        amount.setText(userData.getAmount() + " \u20AC");
+//        DecimalFormat decimalFormat = new DecimalFormat("#,##0,0");
+//        String formattedAmount = decimalFormat.format(userData.getAmount());
+//        System.out.println(formattedAmount);
+        String amount_str = userData.getAmount() + " \u20AC";
+        String formattedString = amount_str.replace('.', ',');
+        amount.setText(formattedString);
         card_number.setText(userData.getIban());
-        if (databaseHelper.getAllUserTransferData(Stash.getString(Config.DNI)) != null) {
+        if (databaseHelper.getAllUserTransferData(Stash.getString(Config.DNI)) != null)
+        {
             recyclerView = findViewById(R.id.recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             List<UserTransferData> transferDataList = databaseHelper.getAllUserTransferData(Stash.getString(Config.DNI));
-            if (transferDataList != null) {
+            if (transferDataList != null)
+            {
+                Collections.reverse(transferDataList);
                 adapter = new TransferDataAdapter(transferDataList);
                 recyclerView.setAdapter(adapter);
-            } else {
+            }
+            else
+            {
                 Log.e("MainActivity", "Transfer data list is null");
             }
         }
-
     }
-
-
-    public void profile(View view) {
+    public void profile(View view)
+    {
             startActivity(new Intent(this, UserProfileActivity.class));
     }
-
     public void transfer(View view) {
         startActivity(new Intent(this, TransferWindowActivity.class));
-
     }
 
     public void finish(View view) {

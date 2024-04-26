@@ -78,7 +78,10 @@ public class CreateAccountActivity extends AppCompatActivity {
         if (!dbHelper.checkEmail(dni)) {
             etDNI.setError("This DNI is already in use");
             etDNI.requestFocus();
-            return;}
+            startActivity(new Intent(this, CreatingAccountErrorActvity.class));
+
+            return;
+        }
         if (email.isEmpty()||!email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
             etEmail.setError("Please enter a valid email");
             etEmail.requestFocus();
