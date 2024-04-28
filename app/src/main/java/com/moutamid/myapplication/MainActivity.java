@@ -43,10 +43,7 @@ public class MainActivity extends AppCompatActivity {
         card_number = findViewById(R.id.card_number);
         databaseHelper = new DatabaseHelper(this);
         UserData userData = databaseHelper.getUserData(Stash.getString(Config.DNI));
-//        DecimalFormat decimalFormat = new DecimalFormat("#,##0,0");
-//        String formattedAmount = decimalFormat.format(userData.getAmount());
-//        System.out.println(formattedAmount);
-        String amount_str = userData.getAmount() + " \u20AC";
+       String amount_str = userData.getAmount() + " \u20AC";
         String formattedString = amount_str.replace('.', ',');
         amount.setText(formattedString);
         card_number.setText(userData.getIban());
